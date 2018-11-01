@@ -1,0 +1,52 @@
+1. With Saucelabs
+2. With AWS Devicefarm
+3. With Dockers
+On local machine, create docker images of 
+a. appium
+b. selenium hub
+c. android emulator node
+
+Below is the command line execution
+------------------------------------
+mvn verify -Dappium.hub=http://127.0.0.1:4723/wd/hub -Dwebdriver.driver=appium
+Now mvn verify will work
+To commit from command prompt,
+git commit . -m "baselining"
+git push
+
+Concepts
+--------
+1. Background keyword are used in Gherkin to describe the pre-condition
+Example of feature files
+-------------------------
+Feature: Logging on to the 'My Flying High' website
+	Frequent Flyer members can register on the 'My Flying High' website
+	using their Frequent Flyer number and a password that they provide
+	
+	Background: Martin is registered on the site
+		Given Martin is a Frequent Flyer member
+		And Martin has registered online with a password of 'secret'
+		
+	Scenario: Logging on successfully
+		When Martin logs on with password 'secret'
+		Then he should be given access to the site
+		
+	Scenario: Logging on with an incorrect password
+		When Martin logs on with password 'wrong'
+		Then he should be informed that his password was incorrect
+		
+	Scenario: Logging on with an expired account
+		Given the account has expired
+		When Martin logs on with password 'secret'
+		Then he should be informed that his account has expired
+		And he should be invited to renew his account
+		
+2. Tags - This can be used to run the before test method for the scenarios where it expected
+Feature: Joining the Frequent Flyer Program
+@end-to-end
+Scenario: Registering online for a new Frequent Flyer account
+
+@Before("@end-to-end")
+public void initializeDatabase() {
+TestDatabase.initialize();
+}

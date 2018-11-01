@@ -1,0 +1,99 @@
+Appium+Serenity-Cucumber+JUNIT
+---------------------------------
+Maven dependencies required
+1. Serenity Core
+2. Serenity-Cucumber
+3. slf4j
+4. assertj
+5. junit
+
+Serenity with JUNIT
+--------------------
+
+
+Folder Structure
+----------------
+root
+	|_ src/test/java
+		|_ com.amaserenity
+			|_ AppiumServer.java
+			|_ TestSuiteRunner.java
+		|_ com.amaserenity.pages
+			|_ AMALoginPage.java
+		|_com.amaserenity.steps
+			|_ LoginStepDefination.java
+		|_com.amaserenity.steps.serenity
+			|_ LoginSteps.java
+	|_src/test/resources
+		|_ features
+			|_ consult_dictionary
+				|_ login.feature
+	|_src
+		|_main
+		|_test
+	|_build.gradle
+	|_pom.xml
+	|_serenity.properties
+	
+Framework
+----------
+First create the feature file which contains the business case.
+After that using page object method, create java class for each page/screen of the application eg. AMALoginPage.java.
+This page java class contains the methods to be performed on that page/screen eg. gotologinPage(), enterValidCredentials(),
+isCalendarPageDisplayed(). This needs to be in sync with the feature file.
+A business case composed of logical steps, each of which will appear in the reports.
+To create the report which is a perfect representation of the business case, each step need to be tied with the page class.
+Now create LoginSteps.java and add each logical step with annotation @Steps. Here the method under @Steps will perform
+a set of actions eg. below code will go to the login page. This corresponds to the feature step "Given User is on login page"
+@Step
+	public void loginPageInvalidDataInput(){
+		loginPage.gotoLoginPage();
+	}
+Now we have to tie this LoginSteps.java with cucumber to replicate the Given, When, Then. This has to be done in another
+java class thats LoginStepDefination.java.
+
+There is a serenity.properties file which contains all the appium driver capabilities like platformname, automationname etc
+
+TestSuiteRunner.java contains the @BeforeClass and @AfterClass to start and stop the appium server.
+
+build.gradle starts the project execution along with pom.xml and trigger TestSuiteRunner.java.
+
+
+
+
+login.feature
+-------------
+This has the business case to certify product feature.
+ 
+Feature: Login page scenarios
+
+Scenario: FTUX - First page login
+Given User is on login page
+When Enter valid credentials
+Then  User is shown calendar page
+
+The above business case is having following steps:
+1. User is on login page
+2. Enter valid credentials
+3. User is shown calendar page
+
+All these steps are defined in LoginStepDefination.java. 
+
+LoginStepDefination.java
+------------------------
+In this java class, the steps are part of @Steps annotation.@Steps annotation is a method imported 
+from net.thucydides.core.annotations.Steps. @Steps is having an instance of LoginSteps() as below:
+@Steps
+LoginSteps  loginSteps;
+
+Here the LoginSteps() is defined in com.amaserenity.steps.serenity.LoginSteps.java. 
+
+But the below annotations are imported from cucumber:
+@Given
+@When
+@Then
+
+
+
+
+

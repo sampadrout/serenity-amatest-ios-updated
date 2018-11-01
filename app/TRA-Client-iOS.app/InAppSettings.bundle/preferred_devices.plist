@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+        <dict>
+            <key>Type</key>
+            <string>PSGroupSpecifier</string>
+            <key>Title</key>
+            <string>CC_AND_WEBINAR_GROUP_TITLE</string>
+        </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSChildPaneSpecifier</string>
+            <key>Title</key>
+            <string>THIS_DEVICE</string>
+            <key>IASKViewControllerClass</key>
+            <string>TRDefaultThisDeviceTableViewController</string>
+            <key>IASKViewControllerSelector</key>
+            <string>init</string>
+        </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSChildPaneSpecifier</string>
+            <key>Title</key>
+            <string>OTHER_DEVICES</string>
+            <key>IASKViewControllerClass</key>
+            <string>TRDefaultOtherDevicesTableViewController</string>
+            <key>IASKViewControllerSelector</key>
+            <string>init</string>
+        </dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>

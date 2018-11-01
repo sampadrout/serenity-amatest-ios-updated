@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+        <dict>
+            <key>Type</key>
+            <string>PSGroupSpecifier</string>
+            <key>Title</key>
+            <string>ALERT_GROUP_TITLE</string>
+        </dict>
+
+        <dict>
+            <key>Type</key>
+            <string>PSMultiValueSpecifier</string>
+            <key>Title</key>
+            <string>ALERT_HOST_TITLE</string>
+            <key>Key</key>
+            <string>alert_host</string>
+            <key>DefaultValue</key>
+            <string>2</string>
+            <key>Values</key>
+            <array>
+                <string>-1</string>
+                <string>1</string>
+                <string>2</string>
+                <string>5</string>
+                <string>10</string>
+            </array>
+            <key>Titles</key>
+            <array>
+                <string>On Meeting Time</string>
+                <string>1 Minute</string>
+                <string>2 Minutes</string>
+                <string>5 Minutes</string>
+                <string>10 Minutes</string>
+            </array>
+        </dict>
+
+<!-- RM - TEST -->
+<!--
+<dict>
+    <key>Type</key>
+    <string>PSChildPaneSpecifier</string>
+    <key>Title</key>
+    <string>ALERT_HOST_TITLE</string>
+    <key>IASKSubtitle</key>
+    <string>Minutes before the meeting</string>
+    <key>DefaultValue</key>
+    <string>2</string>
+    <key>File</key>
+    <string>alerts_host</string>
+</dict>
+-->
+<!-- RM - TEST -->
+        <dict>
+            <key>Type</key>
+            <string>PSMultiValueSpecifier</string>
+            <key>Title</key>
+            <string>ALERT_PARTICIPANT_TITLE</string>
+            <key>Key</key>
+            <string>alert_participant</string>
+            <key>DefaultValue</key>
+            <string>1</string>
+            <key>Values</key>
+            <array>
+                <string>-1</string>
+                <string>1</string>
+                <string>2</string>
+                <string>5</string>
+                <string>10</string>
+            </array>
+            <key>Titles</key>
+            <array>
+                <string>On Meeting Time</string>
+                <string>1 Minute</string>
+                <string>2 Minutes</string>
+                <string>5 Minutes</string>
+                <string>10 Minutes</string>
+            </array>
+        </dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>
