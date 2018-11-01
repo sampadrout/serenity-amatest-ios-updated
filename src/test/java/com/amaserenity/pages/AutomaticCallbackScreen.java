@@ -20,7 +20,7 @@ public class AutomaticCallbackScreen extends PageObject {
 	@FindBy(xpath = "//XCUIElementTypeStaticText[@name='Mobile 1']")
 	private WebElementFacade mobileFirst;
 
-	@FindBy(accessibilityId = "saveButton")
+	@FindBy(accessibilityId = "SaveButton")
 	private WebElementFacade save;
 
 	public void updateAutomaticCallback(String initialValue) {
@@ -32,6 +32,7 @@ public class AutomaticCallbackScreen extends PageObject {
 				break;
 			}
 		}
+		System.out.println("DEBUGGING - >>>" + initialValue);
 		if (initialValue.equals("OFF")) {
 			element(callbackNumber).click();
 			element(mobileFirst).click();

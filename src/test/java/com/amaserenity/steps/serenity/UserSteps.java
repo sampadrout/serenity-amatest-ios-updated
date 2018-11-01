@@ -1,6 +1,7 @@
 package com.amaserenity.steps.serenity;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import com.amaserenity.model.UserAccount;
@@ -34,6 +35,7 @@ public class UserSteps extends ScenarioSteps {
     BusinessCardScreen businessCardScreen;
     JoiningOptions joiningOption;
     AutomaticCallbackScreen automaticCallbackScreen;
+    private HashMap<String,String> map = new HashMap<String,String>();
     
 
     @Step
@@ -187,6 +189,9 @@ public class UserSteps extends ScenarioSteps {
     @Step
    	public void user_taps_on_joining_option() {
     	settingsScreen.tapJoiningOption();
+    	System.out.println("BIKASH  ----> "+ joiningOption.get_automatic_callback_value());
+//    	Serenity.setSessionVariable("Callback").to(joiningOption.get_automatic_callback_value());
+    	map.put("Callback", joiningOption.get_automatic_callback_value().toString());
    	}
     
     @Step
@@ -195,12 +200,17 @@ public class UserSteps extends ScenarioSteps {
    	}
     
     @Step
-   	public void user_updates_automatic_callback(String initialValue) {
-    	automaticCallbackScreen.updateAutomaticCallback(initialValue);
+   	public void user_updates_automatic_callback() {
+    	System.out.println("WHAT " + map.get("Callback"));
+    	automaticCallbackScreen.updateAutomaticCallback(map.get("Callback"));
    	}
     
     @Step
-   	public void user_verifies_automatic_callback(String initialValue) {
-    	joiningOption.get_automatic_callback_value();
+   	public void user_verifies_automatic_callback() {
+    	String finalValue = joiningOption.get_automatic_callback_value();
+    	System.out.println("RISHAV --<"+ finalValue);
+    	if(finalValue.trim().equals(map.get("Callback").toString()))
+    		System.out.println("awesome");
+    			
    	}
 }

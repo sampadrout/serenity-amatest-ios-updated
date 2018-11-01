@@ -36,7 +36,7 @@ public class SettingsScreen extends PageObject {
 	}
 
 	public void tapJoiningOption() {
-		openSettingsSubOption("Joining Option");
+		openSettingsSubOption("Joining Options");
 	}
 
 	public void tapSignout() {

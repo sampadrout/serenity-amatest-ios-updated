@@ -8,7 +8,7 @@ Feature: A registered user can update Callback
     Given user is on login screen
 
   Scenario:  User updates callback
-    When enters username, password and phone number
+     When enters username, password and phone number
       | username 			  | password    |	phonenumber	|
       | traqatest5@gmail.com  | welcometr1  |	9546532543	|
     And taps on login

@@ -16,7 +16,7 @@ import net.thucydides.core.annotations.Managed;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-		features = "src/test/resources/features/updateBusinessCard.feature"
+		features = "src/test/resources/features/automaticCallback.feature"
 //		glue = "com.amaserenity.steps.LoginScenarioSteps"
 		)
 
