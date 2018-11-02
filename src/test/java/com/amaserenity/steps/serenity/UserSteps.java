@@ -1,8 +1,11 @@
 package com.amaserenity.steps.serenity;
 
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+
+import org.assertj.core.api.SoftAssertions;
 
 import com.amaserenity.model.UserAccount;
 import com.amaserenity.pages.AutomaticCallbackScreen;
@@ -181,16 +184,16 @@ public class UserSteps extends ScenarioSteps {
     
     @Step
 	public void verify_salutation() {
+    	SoftAssertions softAssertions = new SoftAssertions();
     	myAccountScreen.verifyMyAccountScreen();
     	myAccountScreen.selectBusinessCard();
-    	System.out.println(businessCardScreen.verify_salutation(Serenity.sessionVariableCalled("Salutation")));
-	}
+    	softAssertions.assertThat(businessCardScreen.verify_salutation(Serenity.sessionVariableCalled("Salutation"))).isEqualTo(true);
+    	softAssertions.assertAll();
+    }
     
     @Step
    	public void user_taps_on_joining_option() {
     	settingsScreen.tapJoiningOption();
-    	System.out.println("BIKASH  ----> "+ joiningOption.get_automatic_callback_value());
-//    	Serenity.setSessionVariable("Callback").to(joiningOption.get_automatic_callback_value());
     	map.put("Callback", joiningOption.get_automatic_callback_value().toString());
    	}
     
@@ -201,16 +204,19 @@ public class UserSteps extends ScenarioSteps {
     
     @Step
    	public void user_updates_automatic_callback() {
-    	System.out.println("WHAT " + map.get("Callback"));
     	automaticCallbackScreen.updateAutomaticCallback(map.get("Callback"));
    	}
     
     @Step
    	public void user_verifies_automatic_callback() {
-    	String finalValue = joiningOption.get_automatic_callback_value();
-    	System.out.println("RISHAV --<"+ finalValue);
-    	if(finalValue.trim().equals(map.get("Callback").toString()))
-    		System.out.println("awesome");
-    			
+    	SoftAssertions softAssertions = new SoftAssertions();
+    	String expected = "";
+    	if(map.get("Callback").equals("OFF"))
+			expected = "ON";
+		else
+			expected = "OFF";
+				
+    	softAssertions.assertThat(joiningOption.get_automatic_callback_value()).isEqualTo(expected); 
+    	softAssertions.assertAll();	
    	}
 }

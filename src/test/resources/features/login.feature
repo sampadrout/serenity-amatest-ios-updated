@@ -1,4 +1,4 @@
-@android @ios @regression
+@ios @regression
 Feature: A registered user can log on to AMA app
   As a registered user
   I want to login to AMA app using my username and password

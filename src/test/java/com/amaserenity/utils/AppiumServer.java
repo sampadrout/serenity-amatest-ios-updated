@@ -37,7 +37,7 @@ public final class AppiumServer {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-			Runtime.getRuntime().exec("killall node");
+			Runtime.getRuntime().exec("kill all node");
 		}
 	}
 }

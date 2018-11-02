@@ -1,4 +1,4 @@
-@android @ios @regression @issue:IOSTRA-3532
+@ios @regression
 Feature: A registered user can update Callback
   As a registered user
   I want to login to AMA app using my username and password
